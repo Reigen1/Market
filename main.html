@@ -606,15 +606,7 @@
 
       cartCount.textContent = cart.length; // Actualizar el contador de carrito
     }
-// Abrir/cerrar carrito
-document.getElementById('cart-icon').addEventListener('click', () => {
-  document.getElementById('cart-modal').classList.toggle('active');
-});
 
-// Redirigir al WhatsApp
-document.querySelector('.whatsapp-support').addEventListener('click', () => {
-  window.open('https://wa.me/TU_NUMERO', '_blank');
-});
     // Añadir al carrito con animación
     document.querySelectorAll('.add-to-cart').forEach(button => {
       button.addEventListener('click', () => {
