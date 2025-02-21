@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ofrezco servicios profesionales de alta calidad. ¡Contáctame para más información!">
+  <meta name="keywords" content="servicios, profesional, contacto, portafolio">
+  <meta name="author" content="Tu Nombre">
+  <title>Tu Nombre - Servicios Profesionales</title>
+  <!-- Estilos CSS -->
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Estilos generales */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    h1, h2, h3 {
+      font-weight: bold;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+
+    /* Header */
+    header {
+      background: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 150px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 2s ease-in-out;
+    }
+    header p {
+      font-size: 1.2rem;
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 2.5s ease-in-out;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #6a11cb;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
+      animation: bounceIn 3s ease-in-out;
+    }
+    .btn:hover {
+      background-color: #2575fc;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Sección de servicios */
+    section {
+      padding: 40px 20px;
+      text-align: center;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: rgb(207, 207, 255);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+    .service-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+    .service-comu img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover img {
+      transform: scale(1.1);
+    }
+    .add-to-cart {
+      background-color: #2575fc;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .add-to-cart:hover {
+      background-color: #1a5bbd;
+    }
+    .sold-out {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: red;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Carrito */
+    .cart-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #6a11cb;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    .cart-icon:hover {
+      transform: scale(1.1);
+    }
+    .cart-count {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: red;
+      color: white;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      animation: bounce 1s infinite;
+    }
+    @keyframes bounce {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    .cart-modal {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 350px;
+      max-height: 400px;
+      background-color: rgb(43, 43, 43);
+      box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+      padding: 20px;
+      z-index: 1000;
+      transform: translateX(100%);
+    }
+    .cart-modal.active {
+      transform: translateX(0);
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .cart-item button {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .cart-total {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: right;
+    }
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #2575fc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    .checkout-btn:hover {
+      background-color: #1a5bbd;
+    }
+
+    /* Sección Doxing */
+    .doxing-section {
+      background-color: #fff;
+      color: #333;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .doxing-section h2 {
+      margin-bottom: 20px;
+    }
+    .doxing-section p {
+      margin-bottom: 20px;
+    }
+
+    /* Sección Streaming */
+    .streaming-section {
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .streaming-section h2 {
+      margin-bottom: 20px;
+    }
+    .streaming-section p {
+      margin-bottom: 20px;
+    }
+
+    /* Soporte por WhatsApp */
+    .whatsapp-support {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    .whatsapp-support:hover {
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    footer a {
+      color: #2575fc;
+      margin: 0 10px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .services {
+        grid-template-columns: 1fr;
+      }
+      .cart-modal {
+        width: 100%;
+        right: -100%;
+      }
+      .cart-modal.active {
+        right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Bienvenido a Mis Servicios</h1>
+    <p>Especializado en ofrecer soluciones profesionales de alta calidad.</p>
+    <a href="https://t.me/reigen_shop" class="btn">Mis Referencias</a>
+    <a href="#contacto" class="btn">Contáctame ahora</a>
+  </header>
+  <section id="servicios">
+    <h2>Streaming</h2>
+    <div class="services">
+      <!-- Tarjeta de servicio 1 -->
+      <div class="service-card">
+        <img src="streaming/hbo.jpg" alt="P HBO">
+        <h3>HBO</h3>
+        <p>Perfil hbo una pantalla , un mes</p>
+        <p><strong>Precio: s/7</strong></p>
+        <button class="add-to-cart" data-name="Perfil HBO" data-price="7">Añadir al carrito</button>
+      </div>
+      <!-- Tarjeta de servicio 2 -->
+      <div class="service-card">
+        <img src="streaming/Netflix.png" alt="P NETFLIX">
+        <h3>NETFLIX</h3>
+        <p>Perfil NETFLIX mensual una pantalla</p>
+        <p><strong>Precio: s/10</strong></p>
+        <button class="add-to-cart" data-name="Netflix perfil" data-price="10" >Añadir al carrito</button>
+      </div>
+      <!-- Tarjeta de servicio 3 -->
+      <div class="service-card">
+        <img src="streaming/Prime.jpg" alt="P Prime video">
+        <h3>Prime Video</h3>
+        <p>Perfil prime video una pantalla , por un mes.</p>
+        <p><strong>Precio: s/6</strong></p>
+        <button class="add-to-cart" data-name="Prime Video Perfil" data-price="6">Añadir al carrito</button>
+      </div>
+    </div>
+  </section>
+  <!-- Sección de Servicios -->
+  <section id="servicios">
+    <h2>Cuentas completas</h2>
+    <div class="services">
+      <!-- Tarjeta de servicio 1 -->
+      <div class="service-card">
+        <img src="streaming/hbo.jpg" alt="HBO">
+        <h3>HBO</h3>
+        <p>Cuenta completa Hbo un mes , 5 perfiles alquiler.</p>
+        <p><strong>Precio: s/12</strong></p>
+        <button class="add-to-cart" data-name="Perfil HBO" data-price="12">Añadir al carrito</button>
+      </div>
+      <!-- Tarjeta de servicio 2 -->
+      <div class="service-card">
+        <img src="streaming/Netflix.png" alt="NETFLIX">
+        <h3>NETFLIX</h3>
+        <p>Cuenta complet NETFLIX plan premiun 5 perfiles un mes alquiler</p>
+        <p><strong>Precio: s/30</strong></p>
+        <button class="add-to-cart" data-name="Netflix perfil" data-price="30" >Añadir al carrito</button>
+      </div>
+      <!-- Tarjeta de servicio 3 -->
+      <div class="service-card">
+        <img src="streaming/Prime.jpg" alt="P Prime video">
+        <h3>Prime Video</h3>
+        <p>Cuenta completa Prime Video 5 perfiles un mes alquiler</p>
+        <p><strong>Precio: s/10</strong></p>
+        <span class="sold-out">AGOTADO</span>
+        <button class="add-to-cart" data-name="Prime Video Perfil" data-price="10" disabled>Agotado</button>
+      </div>
+    </div>
+  </section>
+  <!-- Sección de Servicios -->
+  
+  <!-- Sección de Servicios -->
+  <section id="servicios">
+    <h2>Streaming</h2>
+    <div class="services">
+      <!-- Tarjeta de servicio 1 -->
+      <div class="service-card">
+        <img src="dox/ag.png" alt="arbol">
+        <h3>Arbol Genealogico</h3>
+        <p>Arbol Genealogico , familia completa de una persona</p>
+        <p><strong>Precio: s/4</strong></p>
+        <button class="add-to-cart" data-name="Arbol Genealogico" data-price="4">Añadir al carrito</button>
+      </div>
+      <div class="service-card">
+        <img src="dox/ag.png" alt="arbol">
+        <h3>Arbol Genealogico Visual </h3>
+        <p>Arbol Genealogico , familia completa de una persona en foto</p>
+        <p><strong>Precio: s/4</strong></p>
+        <button class="add-to-cart" data-name="Arbol Genealogico" data-price="6">Añadir al carrito</button>
+      </div>
+      <!-- Tarjeta de servicio 2 -->
+      <div class="service-card">
+        <img src="dox/c4.jpg" alt="C4">
+        <h3>C4</h3>
+        <p>C4 blanco y azul, info completa en pdf , foto de huellas , firma y foto de la persona.</p>
+        <p><strong>Precio: s/8</strong></p>
+        <button class="add-to-cart" data-name="C4" data-price="4" >Añadir al carrito</button>
+      </div>
+      <!-- Tarjeta de servicio 3 -->
+      <div class="service-card">
+        <img src="dox/dniv.jpg" alt="Dni virtual">
+        <h3>DNI VIRTUAL</h3>
+        <p>Dni virtual de una persona ambas caras</p>
+        <p><strong>Precio: s/4</strong></p>
+        <button class="add-to-cart" data-name="DNI VIRTUAL" data-price="4">Añadir al carrito</button>
+      </div>
+      <div class="service-card">
+        <img src="dox/nombre.jpg" alt="Nombre">
+        <h3>Buscar por nombre</h3>
+        <p>Obten el dni de una persona o el nombre por dni</p>
+        <p><strong>Precio: s/2</strong></p>
+        <button class="add-to-cart" data-name="Buscar por nombre" data-price="2">Añadir al carrito</button>
+      </div>
+      <div class="service-card">
+        <img src="dox/antecedentes.png" alt="Prime video">
+        <h3>Atencedentes</h3>
+        <p>Antecedentes Penales , Judiciales y policiales en c4 , verifica si tienes antecedentes</p>
+        <p><strong>Precio: s/4</strong></p>
+        <button class="add-to-cart" data-name="Antecedentes" data-price="4">Añadir al carrito</button>
+      </div>
+      <div class="service-card">
+        <img src="dox/foto.jpg" alt="INFO">
+        <h3>Informacion completa + Fotos</h3>
+        <p>Informacion completa en texto ,direccion , edad , cantidad de hijos , si cuenta con actas , fecha de nacimiento , caducidad , y muchas más.</p>
+        <p><strong>Precio: s/5</strong></p>
+        <button class="add-to-cart" data-name="Info mas foto" data-price="5">Añadir al carrito</button>
+      </div>
+      <div class="service-card">
+        <img src="dox/ven.jpg" alt="ven">
+        <h3>info venezolanos</h3>
+        <p>Info por nombre o cedula de venezolano</p>
+        <p><strong>Precio: s/5</strong></p>
+        <button class="add-to-cart" data-name="info venezolanos" data-price="5">Añadir al carrito</button>
+      </div>
+      <div class="service-card">
+        <img src="dox/placa.jpg" alt="placa">
+        <h3>info por placa</h3>
+        <p>Info por el numero de placa vehicular</p>
+        <p><strong>Precio: s/3</strong></p>
+        <button class="add-to-cart" data-name="Info placa" data-price="3">Añadir al carrito</button>
+      </div>
+      <div class="service-card">
+        <img src="dox/TIVE.jpg" alt="tive">
+        <h3>Tive virtual</h3>
+        <p>Tive vehicular , virtual</p>
+        <p><strong>Precio: s/5</strong></p>
+        <button class="add-to-cart" data-name="TIVE" data-price="5">Añadir al carrito</button>
+      </div>
+      <div class="service-card">
+        <img src="dox/direccion.jpg" alt="direccion">
+        <h3>Direccion de una persona</h3>
+        <p>Info por nombre o cedula de venezolano</p>
+        <p><strong>Precio: s/4</strong></p>
+        <button class="add-to-cart" data-name="info venezolanos" data-price="4">Añadir al carrito</button>
+      </div>
+    </div>
+  </section>
+  <!-- Sección Consultoría -->
+  <section class="-card" style="background-color: #fff; color: #333; padding: 40px 20px; text-align: center;">
+    <img src="streaming/dox.jpg" alt="doxing">
+    <h2>DOXING</h2>
+    <p> Mas tipos de doxeos</p>
+
+
+  <!-- Sección Consultoría -->
+  <section class="service-card" style="background-color: #fff; color: #333; padding: 40px 20px; text-align: center;">
+    <img src="perfil.jpg" alt="direccion">
+    <h2>Consultoría</h2>
+    <p>Hola , soy Reigen , un vendedor de diversos servicios , de manera economica , obten muchos servicios de streaming , doxeo , y muchas cosas mas , confia en nosotros,GRACIAS.</p>
+
+  </section>
+  <!-- Icono del carrito -->
+  <div class="cart-icon" id="cart-icon">
+    <span class="cart-count" id="cart-count">0</span>
+    🛒
+  </div>
+
+  <!-- Modal del carrito -->
+  <div class="cart-modal" id="cart-modal">
+    <h3>Tu carrito</h3>
+    <div id="cart-items"></div>
+    <div class="cart-total" id="cart-total">Total: $0</div>
+    <button class="checkout-btn" id="checkout-btn">Comprar por WhatsApp</button>
+  </div>
+
+  <!-- Botón de soporte por WhatsApp -->
+  <a href="https://wa.me/906749215" target="_blank" class="whatsapp-support">💬</a>
+
+  <!-- Footer -->
+  <footer id="contacto">
+    <p>&copy; 2025 Reigen. Todos los derechos reservados.</p>
+    <div>
+      <a href="https://wa.me/906749215" target="_blank">WhatsApp</a>
+      <a href="https://instagram.com/servicios_rgn" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/share/161w7mN8Pp/" target="_blank">Facebook</a>
+    </div>
+  </footer>
+
+  <!-- Script JavaScript -->
+    <script>
+    // Variables globales
+    const cart = [];
+    const cartIcon = document.getElementById('cart-icon');
+    const cartModal = document.getElementById('cart-modal');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartCount = document.getElementById('cart-count');
+    const cartTotal = document.getElementById('cart-total');
+    const checkoutBtn = document.getElementById('checkout-btn');
+
+    // Función para actualizar el carrito
+    function updateCart() {
+      cartItemsContainer.innerHTML = ''; // Limpiar el contenido anterior
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Tu carrito está vacío.</p>';
+        cartTotal.textContent = 'Total: s/0';
+      } else {
+        cart.forEach((item, index) => {
+          const cartItem = document.createElement('div');
+          cartItem.classList.add('cart-item');
+          cartItem.innerHTML = `
+            <span>${item.name} - $${item.price}</span>
+            <button onclick="removeFromCart(${index})">Eliminar</button>
+          `;
+          cartItemsContainer.appendChild(cartItem);
+          total += item.price;
+        });
+        cartTotal.textContent = `Total: $${total}`;
+      }
+
+      cartCount.textContent = cart.length; // Actualizar el contador de carrito
+    }
+
+    // Añadir al carrito con animación
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        if (button.disabled) return; // Evitar agregar productos agotados
+        const name = button.getAttribute('data-name');
+        const price = parseFloat(button.getAttribute('data-price'));
+
+        // Animación al añadir al carrito
+        const flyToCart = document.createElement('div');
+        flyToCart.style.position = 'fixed';
+        flyToCart.style.width = '20px';
+        flyToCart.style.height = '20px';
+        flyToCart.style.background = '#2575fc';
+        flyToCart.style.borderRadius = '50%';
+        flyToCart.style.zIndex = '1000';
+        document.body.appendChild(flyToCart);
+
+        const rect = button.getBoundingClientRect();
+        flyToCart.style.left = `${rect.left + rect.width / 2}px`;
+        flyToCart.style.top = `${rect.top + rect.height / 2}px`;
+
+        setTimeout(() => {
+          flyToCart.style.left = `${cartIcon.offsetLeft + cartIcon.offsetWidth / 2}px`;
+          flyToCart.style.top = `${cartIcon.offsetTop + cartIcon.offsetHeight / 2}px`;
+          flyToCart.style.transform = 'scale(0)';
+        }, 10);
+
+        setTimeout(() => {
+          document.body.removeChild(flyToCart);
+        }, 1000);
+
+        cart.push({ name, price });
+        updateCart();
+      });
+    });
+
+    // Eliminar del carrito
+    function removeFromCart(index) {
+      cart.splice(index, 1); // Eliminar el elemento del array cart
+      updateCart(); // Actualizar el carrito después de eliminar un item
+    }
+
+    // Abrir/cerrar carrito
+    cartIcon.addEventListener('click', () => {
+      cartModal.classList.toggle('active');
+    });
+
+    // Comprar por WhatsApp
+    checkoutBtn.addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Tu carrito está vacío.');
+        return;
+      }
+      let message = 'Hola, me gustaría comprar los siguientes servicios:\n';
+      cart.forEach(item => {
+        message += `- ${item.name} - $${item.price}\n`;
+      });
+      message += `Total: $${cart.reduce((sum, item) => sum + item.price, 0)}`;
+      window.open(`https://wa.me/906749215?text=${encodeURIComponent(message)}`, '_blank');
+    });
+  </script>
+</body>
+</html>
