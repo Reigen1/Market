@@ -6,7 +6,7 @@
   <meta name="description" content="Ofrezco servicios profesionales de alta calidad. ¡Contáctame para más información!">
   <meta name="keywords" content="servicios, profesional, contacto, portafolio">
   <meta name="author" content="Tu Nombre">
-  <title>Tu Nombre - Servicios Profesionales</title>
+  <title>Reigen - Servicios Profesionales</title>
   <!-- Estilos CSS -->
   <style>
     /* Reset básico */
@@ -192,21 +192,22 @@
 
     /* Carrito */
     .cart-icon {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #6a11cb;
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
+  position: fixed;
+  bottom: 20px;
+  right: 80px; /* Ajusta esta posición para separarlo del botón de WhatsApp */
+  background-color: #6a11cb;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 1001; /* Asegura que esté por encima de otros elementos */
+}
     .cart-icon:hover {
       transform: scale(1.1);
     }
@@ -242,7 +243,7 @@
       right: 20px;
       width: 350px;
       max-height: 400px;
-      background-color: rgb(43, 43, 43);
+      background-color: rgb(0, 0, 0);
       box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
       overflow-y: auto;
@@ -318,22 +319,24 @@
     }
 
     /* Soporte por WhatsApp */
-    .whatsapp-support {
-      position: fixed;
-      bottom: 100px;
-      right: 20px;
-      background-color: #25d366;
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
+    /* Botón de WhatsApp */
+.whatsapp-support {
+  position: fixed;
+  bottom: 20px;
+  right: 20px; /* Ajusta esta posición para separarlo del carrito */
+  background-color: #25d366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 1000; /* Asegura que esté por debajo del carrito */
+}
     .whatsapp-support:hover {
       transform: scale(1.1);
     }
@@ -603,7 +606,15 @@
 
       cartCount.textContent = cart.length; // Actualizar el contador de carrito
     }
+// Abrir/cerrar carrito
+document.getElementById('cart-icon').addEventListener('click', () => {
+  document.getElementById('cart-modal').classList.toggle('active');
+});
 
+// Redirigir al WhatsApp
+document.querySelector('.whatsapp-support').addEventListener('click', () => {
+  window.open('https://wa.me/TU_NUMERO', '_blank');
+});
     // Añadir al carrito con animación
     document.querySelectorAll('.add-to-cart').forEach(button => {
       button.addEventListener('click', () => {
